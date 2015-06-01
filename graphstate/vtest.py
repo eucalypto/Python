@@ -35,14 +35,14 @@ COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.Propert
 new_edge = COLORS_CONFIG.new_edge
 
 edges = [new_edge((-1, 1), Gandalf="f"),
-         new_edge((1, 3), Gandalf="1"),
-         new_edge((1, 2), Gandalf="a"),
-         new_edge((2, 3), Gandalf="4"),
+         new_edge((1, 3), Gandalf="b"),
+         new_edge((1, 2), Gandalf="B"),
+         new_edge((2, 3), Gandalf="A"),
          new_edge((2, -1), Gandalf="f"),
          new_edge((3, -1), Gandalf="f")]
 
 
-state = graph_state.GraphState(edges)
+state = graph_state.PropertiesConfig.new_graph_state(edges)
 
 print state
 
