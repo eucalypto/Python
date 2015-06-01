@@ -19,7 +19,7 @@ from graph_state import property_lib
 
 
 
-COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.PropertyKey(name="Gandalf", is_directed=False, externalizer=property_lib.Rainbow.Externalizer()))
+COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.PropertyKey(name="Gandalf", is_directed=False, externalizer=property_lib.StringExternalizer()))
 
 # from /rg-graph/packages/GraphState/graph_state/graph_state_test.py (l. 13):
 # new_edge = property_lib.COLORS_AND_FIELDS_CONFIG.new_edge
@@ -34,10 +34,10 @@ COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.Propert
 
 new_edge = COLORS_CONFIG.new_edge
 
-edges = [new_edge((-1, 1), Gandalf="g"),
-         new_edge((1, 3), Gandalf="h"),
-         new_edge((1, 2), Gandalf="h"),
-         new_edge((2, 3), Gandalf="b"),
+edges = [new_edge((-1, 1), Gandalf="f"),
+         new_edge((1, 3), Gandalf="1"),
+         new_edge((1, 2), Gandalf="a"),
+         new_edge((2, 3), Gandalf="4"),
          new_edge((2, -1), Gandalf="f"),
          new_edge((3, -1), Gandalf="f")]
 
@@ -45,6 +45,8 @@ edges = [new_edge((-1, 1), Gandalf="g"),
 state = graph_state.GraphState(edges)
 
 print state
+
+print state.edges
 
 # the following command takes the graph-state object "state", searches
 # for the first edge "edges[0]" and prints the first entry in
