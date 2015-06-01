@@ -52,4 +52,9 @@ print state.edges
 # for the first edge "edges[0]" and prints the first entry in
 # "Gandalf" (since Gandalf is a tuple (x, x)) and here we use only the
 # first entry
-print state.edges[0].Gandalf[0]
+# print state.edges[0].Gandalf[0]
+
+print state.edges[0].Gandalf
+
+print "now all the isomorphies:"
+print state.sortings
