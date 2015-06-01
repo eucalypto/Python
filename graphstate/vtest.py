@@ -3,8 +3,8 @@
 
 import sys
 import graph_state
-sys.path.append('~/Documents/mycode/')
-import graph_state_property
+from graph_state import graph_state_property
+from graph_state import property_lib
 
 
 # from /rg-graph/packages/GraphState/graph_state/property_lib.py (l.215):
@@ -19,7 +19,7 @@ import graph_state_property
 
 
 
-COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.PropertyKey(name="colors", is_directed=False, externalizer=Rainbow.Externalizer()))
+COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.PropertyKey(name="colors", is_directed=False, externalizer=property_lib.Rainbow.Externalizer()))
 
 # from /rg-graph/packages/GraphState/graph_state/graph_state_test.py (l. 13):
 # new_edge = property_lib.COLORS_AND_FIELDS_CONFIG.new_edge
@@ -32,11 +32,13 @@ COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.Propert
 #                 edge_id=333)
 
 
-new_edge = property_lib.COLORS_CONFIG.new_edge
+new_edge = COLORS_CONFIG.new_edge
 
 edges = [new_edge((-1, 1)),
          new_edge((1, 3)),
-         new_edge((1, 3)),
+         new_edge((1, 2)),
+         new_edge((2, 3)),
+         new_edge((2, -1)),
          new_edge((3, -1))]
 
 state = graph_state.GraphState(edges)
