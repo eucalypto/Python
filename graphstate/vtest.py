@@ -7,6 +7,7 @@ from graph_state import graph_state_property
 from graph_state import property_lib
 
 
+
 # from /rg-graph/packages/GraphState/graph_state/property_lib.py (l.215):
 # COLORS_AND_FIELDS_CONFIG = \
 #     graph_state.PropertiesConfig.create(graph_state_property.PropertyKey(name="colors",
@@ -19,7 +20,11 @@ from graph_state import property_lib
 
 
 
-COLORS_CONFIG = graph_state.PropertiesConfig.create(graph_state_property.PropertyKey(name="Gandalf", is_directed=False, externalizer=property_lib.StringExternalizer()))
+COLORS_CONFIG = graph_state.PropertiesConfig.create(
+    graph_state_property.PropertyKey(
+        name="Gandalf",
+        is_directed=False,
+        externalizer=property_lib.StringExternalizer()))
 
 # from /rg-graph/packages/GraphState/graph_state/graph_state_test.py (l. 13):
 # new_edge = property_lib.COLORS_AND_FIELDS_CONFIG.new_edge
@@ -55,6 +60,26 @@ print state.edges
 # print state.edges[0].Gandalf[0]
 
 print state.edges[0].Gandalf
+
+
+print "Nodes?"
+externalcount = 0
+external_dot_string = "{node [shape=plaintext] "
+for edge in state.edges:
+    if edge.is_external():
+        string = "E" + str(externalcount)
+        string += " -- "
+        string += str(edge.internal_node) + ";"
+        print string
+        external_dot_string += " E" + str(externalcount)
+        externalcount += 1
+    else:
+        string = str(edge.nodes[0]) + " -- " + str(edge.nodes[1]) + ";"
+        print string
+
+external_dot_string += "}"
+print external_dot_string
+
 
 print "now all the isomorphies:"
 print state.sortings
