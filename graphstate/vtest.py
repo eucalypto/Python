@@ -24,7 +24,7 @@ COLORS_CONFIG = graph_state.PropertiesConfig.create(
     graph_state_property.PropertyKey(
         name="Gandalf",
         is_directed=False,
-        externalizer=property_lib.StringExternalizer()))
+        externalizer=property_lib.Rainbow.Externalizer()))
 
 # from /rg-graph/packages/GraphState/graph_state/graph_state_test.py (l. 13):
 # new_edge = property_lib.COLORS_AND_FIELDS_CONFIG.new_edge
@@ -39,12 +39,12 @@ COLORS_CONFIG = graph_state.PropertiesConfig.create(
 
 new_edge = COLORS_CONFIG.new_edge
 
-edges = [new_edge((-1, 1), Gandalf="f"),
-         new_edge((1, 3), Gandalf="b"),
-         new_edge((1, 2), Gandalf="B"),
-         new_edge((2, 3), Gandalf="A"),
-         new_edge((2, -1), Gandalf="f"),
-         new_edge((3, -1), Gandalf="f")]
+edges = [new_edge((-1, 1), Gandalf=property_lib.Rainbow((1,))),
+         new_edge((1, 3), Gandalf=property_lib.Rainbow((0,))),
+         new_edge((1, 2), Gandalf=property_lib.Rainbow((0,))),
+         new_edge((2, 3), Gandalf=property_lib.Rainbow((0,))),
+         new_edge((2, -1), Gandalf=property_lib.Rainbow((1,))),
+         new_edge((3, -1), Gandalf=property_lib.Rainbow((1,)))]
 
 
 state = graph_state.PropertiesConfig.new_graph_state(edges)
