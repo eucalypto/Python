@@ -12,4 +12,3 @@ import fileinput
 # prints them to stdout
 for edge_list_raw in fileinput.input():
     print(edge_list_raw.strip())
-
